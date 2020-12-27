@@ -30,54 +30,54 @@ public class T02_AtomicVsSyncVsLongAdder {
         //TimeUnit.SECONDS.sleep(10);
 
         System.out.println("Atomic: " + count1.get() + " time " + (end-start));
-        //-----------------------------------------------------------
-        Object lock = new Object();
-
-        for(int i=0; i<threads.length; i++) {
-            threads[i] =
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        for (int k = 0; k < 100000; k++)
-                            synchronized (lock) {
-                                count2++;
-                            }
-                    }
-                });
-        }
-
-        start = System.currentTimeMillis();
-
-        for(Thread t : threads ) t.start();
-
-        for (Thread t : threads) t.join();
-
-        end = System.currentTimeMillis();
-
-
-        System.out.println("Sync: " + count2 + " time " + (end-start));
+//        //-----------------------------------------------------------
+//        Object lock = new Object();
+//
+//        for(int i=0; i<threads.length; i++) {
+//            threads[i] =
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        for (int k = 0; k < 100000; k++)
+//                            synchronized (lock) {
+//                                count2++;
+//                            }
+//                    }
+//                });
+//        }
+//
+//        start = System.currentTimeMillis();
+//
+//        for(Thread t : threads ) t.start();
+//
+//        for (Thread t : threads) t.join();
+//
+//        end = System.currentTimeMillis();
+//
+//
+//        System.out.println("Sync: " + count2 + " time " + (end-start));
 
 
         //----------------------------------
-        for(int i=0; i<threads.length; i++) {
-            threads[i] =
-                    new Thread(()-> {
-                        for(int k=0; k<100000; k++) count3.increment();
-                    });
-        }
-
-        start = System.currentTimeMillis();
-
-        for(Thread t : threads ) t.start();
-
-        for (Thread t : threads) t.join();
-
-        end = System.currentTimeMillis();
-
-        //TimeUnit.SECONDS.sleep(10);
-
-        System.out.println("LongAdder: " + count1.longValue() + " time " + (end-start));
+//        for(int i=0; i<threads.length; i++) {
+//            threads[i] =
+//                    new Thread(()-> {
+//                        for(int k=0; k<100000; k++) count3.increment();
+//                    });
+//        }
+//
+//        start = System.currentTimeMillis();
+//
+//        for(Thread t : threads ) t.start();
+//
+//        for (Thread t : threads) t.join();
+//
+//        end = System.currentTimeMillis();
+//
+//        //TimeUnit.SECONDS.sleep(10);
+//
+//        System.out.println("LongAdder: " + count3.longValue() + " time " + (end-start));
 
     }
 

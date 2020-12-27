@@ -11,6 +11,11 @@ package com.mashibing.juc.c_021_01_interview;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 写一个固定容量同步容器 put set方法 getCount
+ * 能支持2个生产者线程 10个消费者线程的阻塞调用
+ * @param <T>
+ */
 public class MyContainer1<T> {
 	final private LinkedList<T> lists = new LinkedList<>();
 	final private int MAX = 10; //最多10个元素

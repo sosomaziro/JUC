@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class T02_WithVolatile {
 
 	//添加volatile，使t2能够得到通知
-	//volatile List lists = new LinkedList();
+//	volatile List lists = new LinkedList();
 	volatile List lists = Collections.synchronizedList(new LinkedList<>());
 
 	public void add(Object o) {
